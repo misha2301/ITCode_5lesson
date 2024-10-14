@@ -84,6 +84,11 @@ class CoachCreateView(CreateView):
         form.instance.hockey_club_id = self.kwargs['club_id']
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['club_id'] = self.kwargs['club_id']
+        return context
+
     def get_success_url(self):
         return reverse_lazy('coaching-staff-list', kwargs={'club_id': self.kwargs['club_id']})
 
@@ -91,6 +96,11 @@ class CoachUpdateView(UpdateView):
     model = CoachingStaff
     template_name = 'coach_form.html'
     fields = ['first_name', 'last_name']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['club_id'] = self.kwargs['club_id']  # Добавляем club_id в контекст
+        return context
 
     def get_success_url(self):
         return reverse_lazy('coaching-staff-list', kwargs={'club_id': self.kwargs['club_id']})

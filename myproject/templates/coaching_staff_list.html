@@ -1,17 +1,22 @@
-{% extends 'base.html' %}
-
-{% block title %}Тренерский штаб{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
-    <h1>Тренерский штаб</h1>
+<h2>Список тренеров для {{ hockey_club.name }}</h2>
 
-    <ul>
-        {% for coach in coaches %}
-            <li>
-                {{ coach.first_name }} {{ coach.last_name }}
+<ul>
+    {% for coach in coaches %}
+        <li>
+            {{ coach.first_name }} {{ coach.last_name }} - {{coach.role}}
+            <a href="{% url 'coach-update' club_id=hockey_club.id pk=coach.pk %}">Изменить</a>
+            <a href="{% url 'coach-delete' club_id=hockey_club.id pk=coach.pk %}">Удалить</a>
+        </li>
+    {% empty %}
+        <li>Нет тренеров.</li>
+    {% endfor %}
+</ul>
 
+<a href="{% url 'coach-create' club_id=hockey_club.id %}">Добавить тренера</a>
 
-            </li>
-        {% endfor %}
-    </ul>
+<a href="{% url 'club-detail' pk=hockey_club.id %}">Назад</a>
+
 {% endblock %}

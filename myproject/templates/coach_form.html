@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+<h2>{% if object.pk %}Изменение{% else %}Добавить{% endif %} тренера</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if object.pk %}Сохранить изменения{% else %}Добавить{% endif %}</button>
+</form>
+
+<a href="{% url 'coaching-staff-list' club_id=club_id %}">Назад к списку</a>
+{% endblock %}

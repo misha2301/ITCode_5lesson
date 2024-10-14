@@ -5,5 +5,6 @@
 {% block content %}
     <h1>{{ hockey_club.name }}</h1>
     <a href="{% url 'team-list' hockey_club.pk %}">Состав</a> |
-    <a href="{% url 'coaching-staff-list' hockey_club.pk %}">Тренерский штаб</a>
+    <a href="{% url 'coaching-staff-list' hockey_club.pk %}">Тренерский штаб</a> |
+    <a href="{% url 'club-list' %}">Назад к выбору клуба</a>
 {% endblock %}
