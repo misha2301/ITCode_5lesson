@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Детали игрока: {{ player.first_name }} {{ player.last_name }}{% endblock %}
+
+{% block content %}
+<h2>Детали игрока: {{ player.first_name }} {{ player.last_name }}</h2>
+
+<p><strong>Позиция:</strong> {{ player.position }}</p>
+<p><strong>Номер:</strong> {{ player.number }}</p>
+<p><strong>Национальность:</strong> {{ player.nationality }}</p>
+<p><strong>Хоккейный клуб:</strong> {{ hockey_club.name }}</p>
+
+<a href="{% url 'player-update' club_id=player.hockey_club_id pk=player.pk %}">Изменить</a>
+<a href="{% url 'player-delete' club_id=player.hockey_club_id pk=player.pk %}">Удалить</a>
+<a href="{% url 'team-list' club_id=player.hockey_club_id %}">Назад к списку игроков</a>
+{% endblock %}
+

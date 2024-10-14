@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ hockey_club.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ hockey_club.name }}</h1>
+    <a href="{% url 'team-list' hockey_club.pk %}">Состав</a> |
+    <a href="{% url 'coaching-staff-list' hockey_club.pk %}">Тренерский штаб</a>
+{% endblock %}

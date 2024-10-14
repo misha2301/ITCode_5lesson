@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Тренерский штаб{% endblock %}
+
+{% block content %}
+    <h1>Тренерский штаб</h1>
+
+    <ul>
+        {% for coach in coaches %}
+            <li>
+                {{ coach.first_name }} {{ coach.last_name }}
+
+
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

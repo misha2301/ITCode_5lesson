@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Список хоккейных клубов{% endblock %}
+
+{% block content %}
+    <h1>Список хоккейных клубов</h1>
+    <ul>
+        {% for club in hockey_clubs %}
+            <li>
+                <a href="{% url 'club-detail' club.pk %}">{{ club.name }}</a>
+            </li>
+        {% empty %}
+            <li>Нет доступных хоккейных клубов.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

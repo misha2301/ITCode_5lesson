@@ -1,0 +1,8 @@
+<h2>Вы уверены, что хотите удалить игрока {{ player.first_name }} {{ player.last_name }}?</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+</form>
+
+<a href="{% url 'team-list' club_id=player.hockey_club.id %}">Назад к списку игроков</a>

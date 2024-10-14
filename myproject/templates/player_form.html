@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{% if object.pk %}Изменение игрока{% else %}Добавить игрока{% endif %}{% endblock %}
+
+{% block content %}
+<h2>{% if object.pk %}Изменение{% else %}Добавить{% endif %} игрока</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if object.pk %}Сохранить изменения{% else %}Добавить{% endif %}</button>
+</form>
+
+<a href="{% url 'team-list' club_id=club_id %}">Назад к списку</a>
+{% endblock %}

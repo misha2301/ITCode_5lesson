@@ -1,0 +1,9 @@
+<h1>Тренеры клуба {{ hockey_club.name }}</h1>
+
+<ul>
+    {% for coach in coaches %}
+        <li>{{ coach.first_name }} {{ coach.last_name }}</li>
+    {% endfor %}
+</ul>
+
+

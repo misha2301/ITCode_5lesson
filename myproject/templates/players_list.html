@@ -1,0 +1,24 @@
+<!-- players_list.html -->
+{% extends "base.html" %}
+
+{% block title %}
+    Список игроков клуба
+{% endblock %}
+
+{% block content %}
+    <h1>Игроки клуба: {{ club.name }}</h1>
+
+    <ul>
+    {% for player in players %}
+        <li>{{ player.first_name }} {{ player.last_name }} - {{ player.position }}
+            <a href="{% url 'player-update' club_id=club.id pk=player.pk %}">Изменить</a>
+            <a href="{% url 'player-delete' club_id=club.id pk=player.pk %}">Удалить</a>
+        </li>
+    {% endfor %}
+</ul>
+
+    <!-- Добавляем кнопку для создания нового игрока -->
+    <a href="{% url 'player-create' club_id=club.id %}" class="btn btn-primary">Добавить игрока</a>
+
+    <a href="{% url 'club-detail' pk=club.id %}">Назад к клубу</a>
+{% endblock %}

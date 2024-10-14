@@ -1,0 +1,15 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Список клубов{% endblock %}
+
+{% block content %}
+    <h1>Список клубов</h1>
+    <ul>
+        {% for club in clubs %}
+            <li>
+                <a href="{% url 'club-detail' club.pk %}">{{ club.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
