@@ -2,7 +2,9 @@
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
+from django_filters.views import FilterView
 from .models import Player, HockeyClub, CoachingStaff
+from .filters import PlayerFilter
 
 
 class HockeyClubListView(ListView):
@@ -123,4 +125,18 @@ class CoachListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['hockey_club'] = HockeyClub.objects.get(pk=self.kwargs['club_id'])
+        return context
+
+class PlayerListView(FilterView):
+    model = Player
+    template_name = 'players_list.html'
+    context_object_name = 'players'
+    filterset_class = PlayerFilter
+
+    def get_queryset(self):
+        return Player.objects.filter(hockey_club_id=self.kwargs['club_id'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['club'] = HockeyClub.objects.get(pk=self.kwargs['club_id'])
         return context

@@ -8,6 +8,11 @@
 {% block content %}
 <h1>Игроки клуба: {{ club.name }}</h1>
 
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Применить фильтры</button>
+</form>
+
 <ul>
     {% for player in players %}
     <li>{{ player.first_name }} {{ player.last_name }} - {{ player.position }}
