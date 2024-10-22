@@ -23,7 +23,7 @@ class PlayerFactory(factory.django.DjangoModelFactory):
 class CoachingStaffFactory(factory.django.DjangoModelFactory):
     first_name = factory.Faker('first_name')
     last_name = factory.Faker('last_name')
-    role = factory.Iterator(['Главный тренер', 'Тренер', 'Тренер вратарей', 'Тренер по физической подготовке'])  # Задаем возможные роли
+    role = factory.Iterator(['Главный тренер', 'Тренер', 'Тренер вратарей', 'Тренер по физической подготовке'])
     hockey_club = factory.SubFactory(HockeyClubFactory)
 
     class Meta:
