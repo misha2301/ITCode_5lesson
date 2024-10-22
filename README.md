@@ -1,3 +1,10 @@
+7 УРОК ДЗ
+
+![image](https://github.com/user-attachments/assets/3a445c56-f0bd-4391-bf77-a5e254acd20d)
+
+
+
+
 6 УРОК ДЗ
 
 ФИЛЬТР ПОИСКА ПО ФАМИЛИИ ИЛИ ИМЕНИ
